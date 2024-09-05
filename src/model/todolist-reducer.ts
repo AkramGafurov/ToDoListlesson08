@@ -13,17 +13,17 @@ const initialState: TodolistType[] = [
     {id: todolistID2, title: 'What to buy', filter: 'all'},
 ]
 
-export const todolistReducer = (state: TodolistType[] = initialState, action: any) => {
+export const todolistReducer = (state: TodolistType[] = initialState, action: actionType) => {
     switch (action.type) {
         case ('REMOVE-TASK'):{
-            return state
+            return state.filter(item=>item.id!==action.payload.id)
         }
          case ('Add-TASK'):{
             return state
         }
-        case ('CANGE-TASK-STATUS'):{
+        case ('CHANGE-TASK-STATUS'):{
             return state
         }
-        default: return state
+        default: throw new Error('Unknown action type')
     }
 }
